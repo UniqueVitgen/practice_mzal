@@ -380,7 +380,7 @@
                                 <div class="image">
                                     <!--<img alt="" src="../resources/assets/images/blank.gif" data-echo="../resources/assets/images/products/${vmc.photo1}" width="246" height="186" />-->
                                     <a href="/automated_line-${light.url}">
-                                     <img alt="${light.modelEn}" src="../resources/assets/images/blank.gif" data-echo="../resources/assets/images/products/${light.photo1}" width="246" height="186" />
+                                     <img alt="${light.modelEn}" src="resources/assets/images/products/${light.photo1}" data-echo="resources/assets/images/products/${light.photo1}" width="246" height="186" />
                                     </a>
                                 </div>
                                 <div class="body">
@@ -493,7 +493,7 @@
                 <div class="no-margin col-xs-12 col-sm-4 image-holder">
                     <div class="image">
                         <a href="/automated_line-${light.url}">
-                        <img alt="${light.modelEn}" src="../resources/assets/images/blank.gif" data-echo="../resources/assets/images/products/${light.photo1}"  width="246" height="186"/>
+                        <img alt="${light.modelEn}" src="resources/assets/images/products/${light.photo1}" data-echo="resources/assets/images/products/standart.png"  width="246" height="186"/>
                         </a>
                     </div>
                 </div><!-- /.image-holder -->

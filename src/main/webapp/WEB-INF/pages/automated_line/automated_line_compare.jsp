@@ -139,7 +139,7 @@
                                 </a>
                                 
                                 <!--<a href="vmc${item1.id}" > <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image" src="../resources/assets/images/products/${item1.photo1}">   </a>-->                     
-                                <a href="/light-${item1.url}" > <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image" src="../resources/assets/images/products/${item1.photo1}">   </a>                     
+                                <a href="/light-${item1.url}" > <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image" src="resources/assets/images/products/${item1.photo1}">   </a>
 
                             </div>
                                 
@@ -307,7 +307,7 @@
                                     <td class="comparison-item-cell odd product_39">
                                         <p> ${item1.typeLidc} </p>
                                         <c:if test="${not empty item1.photo5}">
-                                         <img width="220" height="154" alt="${item1.photo5}" class="attachment-yith-woocompare-image" src="../resources/assets/images/products/${item1.photo5}">                   
+                                         <img width="220" height="154" alt="${item1.photo5}" class="attachment-yith-woocompare-image" src="resources/assets/images/products/${item1.photo5}">
                                         </c:if>
                                     </td>
                                 </c:forEach>

@@ -121,28 +121,28 @@
                 <!--<a data-rel="prettyphoto" href="../resources/assets/images/products/${vmc.photo1}">-->
                 <a data-rel="prettyphoto" href="resources/assets/images/products/${automatedLine.photo1}">
                     <img class="img-responsive" alt="${automatedLine.modelEn}"
-                         src="${automatedLine.photo1}"
-                         data-echo="D:\\6term/практика/Light_Example/MozyrSelMash/src/main/resources/assets/images/products/${automatedLine.photo1}" />
-                         <!--src="../resources/assets/images/products/${vmc.photo1}"--> 
+                         src="resources/assets/images/products/${automatedLine.photo1}"
+                         data-echo="resources/assets/images/products/standart.png" />
+                         <!--src="../resources/assets/images/products/${vmc.photo1}"-->
                          <!--data-echo="../resources/assets/images/products/${vmc.photo1}" />-->
                          <!--src="../resources/assets/images/blank.gif"--> 
                 </a>
             </div><!-- /.single-product-gallery-item -->
             
             <div class="single-product-gallery-item" id="slide2">
-                <a data-rel="prettyphoto" href="../resources/assets/images/products/${automatedLine.photo2}">
+                <a data-rel="prettyphoto" href="resources/assets/images/products/${automatedLine.photo2}">
                     <img class="img-responsive" alt="${automatedLine.modelEn}"
-                         src="${automatedLine.photo2}"
-                         data-echo="../resources/assets/images/products/${automatedLine.photo2}" />
-                         <!--src="../resources/assets/images/blank.gif"--> 
+                         src="resources/assets/images/products/${automatedLine.photo2}"
+                         data-echo="resources/assets/images/products/standart.png" />
+                         <!--src="../resources/assets/images/blank.gif"-->
                 </a>
             </div><!-- /.single-product-gallery-item -->
             
             <div class="single-product-gallery-item" id="slide3">
-                <a data-rel="prettyphoto" href="../resources/assets/images/products/${automatedLine.photo3}">
+                <a data-rel="prettyphoto" href="resources/assets/images/products/${automatedLine.photo3}">
                     <img class="img-responsive" alt="${automatedLine.modelEn}"
-                         src="${automatedLine.photo3}"
-                         data-echo="../resources/assets/images/products/${automatedLine.photo3}" />
+                         src="resources/assets/images/products/${automatedLine.photo3}"
+                         data-echo="resources/assets/images/products/standart.png" />
                          <!--src="../resources/assets/images/blank.gif"--> 
                 </a>
             </div><!-- /.single-product-gallery-item -->
@@ -187,17 +187,17 @@
                 <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="0" href="#slide1">
                     <!--<img width="67" alt="" src="../resources/assets/images/blank.gif" data-echo="../resources/assets/images/products/bench${automatedLine.id}.jpg" />-->
                     <!--<img width="67" alt="" src="../resources/assets/images/products/${automatedLine.photo1}" data-echo="../resources/assets/images/products/${automatedLine.photo1}" />-->
-                    <img width="67" alt="${automatedLine.modelEn}" src="resources/assets/images/products/${automatedLine.photo1}" data-echo="resources/assets/images/products/${automatedLine.photo1}" />
+                    <img width="67" alt="${automatedLine.modelEn}" src="resources/assets/images/products/${automatedLine.workpiecePhoto1}" data-echo="resources/assets/images/products/standart.png" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
                     <!--<img width="67" alt="" src="../resources/assets/images/blank.gif" data-echo="../resources/assets/images/products/automatedLinegallery-thumb-01.jpg" />-->
-                    <img width="67" alt="${automatedLine.modelEn}"  src="resources/assets/images/products/automatedLine${automatedLine.photo2}" data-echo="../resources/assets/images/products/${automatedLine.photo2}"  />
+                    <img width="67" alt="${automatedLine.modelEn}"  src="resources/assets/images/products/automatedLine${automatedLine.workpiecePhoto2}" data-echo="resources/assets/images/products/standart.png"  />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide3">
                     <!--<img width="67" alt="" src="../resources/assets/images/blank.gif" data-echo="../resources/assets/images/products/automatedLinebench${automatedLine.id}.jpg" />-->
-                    <img width="67" alt="${automatedLine.modelEn}"  src="resources/assets/images/products/${automatedLine.photo3}" data-echo="resources/assets/images/products/${automatedLine.photo3}"  />
+                    <img width="67" alt="${automatedLine.modelEn}"  src="resources/assets/images/products/${automatedLine.photo3}" data-echo="resources/assets/images/products/standart.png"  />
                 </a>
 
                 <%--<a class="horizontal-thumb" data-target="#owl-single-product" data-slide="3" href="#slide4">--%>
@@ -323,7 +323,7 @@
             
             <ul class="nav nav-tabs simple" >
                 <%--<li ><a href="#description" data-toggle="tab"> <spring:message code="vmc.video" text="Video" /></a></li>--%>
-                <li class="active" ><a href="#additional-info" data-toggle="tab"> <spring:message code="vmc.technicaldata" text="Technical data" /></a></li>
+                <li class="active" ><a href="#additional-info" data-toggle="tab"> <spring:message code="automated_line.technical_data" text="Technical data" /></a></li>
                 <!--<li><a href="#reviews" data-toggle="tab">Reviews (3)</a></li>-->
             </ul><!-- /.nav-tabs -->
 
@@ -368,15 +368,35 @@
                 <div class="tab-pane active" id="additional-info">
                     <ul class="tabled-data">
 
+
+                        <li>
+                            <label><spring:message code="automated_line.model" text="model" /></label>
+                            <div class="value">
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.modelEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.modelRu}
+                                </c:if></div>
+
+                        </li>
+
                         
                         <li>
                             <label><spring:message code="lightcompare.type" text="type" /></label>
-                            <div class="value">${automatedLine.typeEn}</div>
+                            <div class="value">
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.typeEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.typeRu}
+                                </c:if></div>
                             
                         </li>
                         <li>
                             <label><spring:message code="lightcompare.manufacturer" text="Manufacturer" /></label>
-                            <div class="value">${automatedLine.manufacturerEn}</div>
+                            <div class="value">
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.manufacturerEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.manufacturerRu}
+                                </c:if>
+                                </div>
                             
                         </li>
                         <%--<li>--%>
@@ -384,17 +404,32 @@
                             <%--<div class="value">${automatedLine.countryEn}</div>--%>
                         <%--</li>--%>
                         <li>
-                            <label><spring:message code="lightcompare.cnc" text="cnct"/></label>
-                            <div class="value">${automatedLine.cncEn}</div>
+                            <label><spring:message code="lightcompare.cnc" text="cnc"/></label>
+                            <div class="value">
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.cncEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.cncRu}
+                                </c:if>
+                                </div>
                         </li>
                         <li>
-                            <label><spring:message code="lightcompare.diffuser" text="Diffuser"/></label>
-                            <div class="value">${automatedLine.cncFullEn}</div>
+                            <label><spring:message code="lightcompare.cnc_full" text="cnc full"/></label>
+                            <div class="value">
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.cncFullEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.cncFullRu}
+                                </c:if>
+                                </div>
                         </li>
                         
                         <li>
-                            <label><spring:message code="lightcompare.luminous_flux" text="luminous Flux"/></label>
-                            <div class="value">${automatedLine.machineConditionEn}</div>
+                            <label><spring:message code="lightcompare.machine_condition" text="machine condition"/></label>
+                            <div class="value">
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.machineConditionEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.machineConditionRu}
+                                </c:if>
+                                </div>
                         </li>
                         
                         <%--<li>--%>
@@ -413,7 +448,12 @@
                         
                         <li>
                             <label><spring:message code="automated_line.machine_location" text="Machine location"/></label>
-                            <div class="value">${automatedLine.machineLocationEn}</div>
+                            <div class="value">
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.machineLocationEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.machineLocationRu}
+                                </c:if>
+                                </div>
                         </li>
                         
                         <%--<li>--%>
@@ -434,7 +474,14 @@
                         
                         <li>
                             <label><spring:message code="automated_line.workpiece" text="workpiece"/></label>
-                            <div class="value">${automatedLine.workpieceEn}</div>
+                            <div class="value">
+
+
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.workpieceEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.workpieceRu}
+                                </c:if>
+                                </div>
                         </li>
                         
                         <li>
@@ -443,17 +490,23 @@
                         </li>
                         
                         <li>
-                            <label><spring:message code="descriptionEn" text="descriptionEn"/></label>
-                            <div class="value">${automatedLine.descriptionEn}</div>
+                            <label><spring:message code="automated_line.workpiece_description" text="workpiece description"/></label>
+                            <div class="value">
+
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.workpieceDescriptionEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.workpieceDescriptionRu}
+                                </c:if>
+                                </div>
                         </li>
                         
                         <li>
-                            <label><spring:message code="dimensions" text="dimensions"/></label>
+                            <label><spring:message code="automated_line.dimensions" text="dimensions"/></label>
                             <div class="value">${automatedLine.dimensions}</div>
                         </li>
                         
                         <li>
-                            <label><spring:message code="weight" text="weight"/></label>
+                            <label><spring:message code="automated_line.weight" text="weight"/></label>
                             <div class="value">${automatedLine.weight}</div>
                         </li>
                         
@@ -463,18 +516,23 @@
                         <%--</li>--%>
 
                         <li>
-                            <label><spring:message code="productivity" text="productivity"/> </label>
+                            <label><spring:message code="automated_line.productivity" text="productivity"/> </label>
                             <div class="value">${automatedLine.productivity}</div>
                         </li>
 
                         <li>
-                            <label><spring:message code="price" text="price"/> </label>
+                            <label><spring:message code="automated_line.price" text="price"/> </label>
                             <div class="value">${automatedLine.price}</div>
                         </li>
 
                         <li>
-                            <label><spring:message code="description" text="description"/> </label>
-                            <div class="value">${automatedLine.descriptionEn}</div>
+                            <label><spring:message code="automated_line.description" text="description"/> </label>
+                            <div class="value">
+                                <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.descriptionEn}
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.descriptionRu}
+                                </c:if>
+                            </div>
                         </li>
                         
                         <%--<li>--%>
