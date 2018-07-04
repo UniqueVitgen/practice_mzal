@@ -85,11 +85,19 @@
                         <!--</li>--> 
   
                              <li class="breadcrumb-item">
-                            <a href="/automated_line?type=${automatedLine.typeEn}">Light - ${automatedLine.typeEn}</a>
+                                <a href="#"><spring:message code="all_departments.automated_line" text="Aggregate machine" /></a>
                         </li> 
                         
                        <li class="breadcrumb-item current">
-                            <a href="">${AutomatedLine.manufacturerEn} - ${AutomatedLine.modelEn}</a>
+                            <a href="">
+                                <c:if test="${pageContext.response.locale == 'en'}"><spring:message text="${automatedLine.manufacturerRu}" />
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'russia'}"><spring:message text="${automatedLine.manufacturerRu}" />
+                                </c:if> -
+                                <c:if test="${pageContext.response.locale == 'en'}"><spring:message text="${automatedLine.modelEn}" />
+                                </c:if>
+                                <c:if test="${pageContext.response.locale == 'russia'}"><spring:message text="${automatedLine.modelRu}" />
+                                </c:if></a>
                         </li> 
                     </ul>
                 </li><!-- /.breadcrumb-nav-holder --> 
@@ -263,8 +271,16 @@
         <!--<div class="star-holder inline"><div class="star" data-score="4"></div></div>-->
         <div class="availability"><label>Availability:</label><span class="available">  in stock</span></div>
 
-        <div class="title"><a href="#">${automatedLine.modelEn}</a></div>
-        <div class="brand">  Type: ${automatedLine.typeEn}</div>
+        <div class="title"><a href="#">
+            <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.modelEn}
+            </c:if>
+            <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.modelRu}
+            </c:if>${automatedLine.modelEn}</a></div>
+        <div class="brand">  Type:
+            <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.typeEn}
+            </c:if>
+            <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.typeRu}
+            </c:if></div>
 
         <div class="social-row">
             <span class="st_facebook_hcount"></span>
@@ -374,7 +390,7 @@
                             <div class="value">
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.modelEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.modelRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.modelRu}
                                 </c:if></div>
 
                         </li>
@@ -385,7 +401,7 @@
                             <div class="value">
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.typeEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.typeRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.typeRu}
                                 </c:if></div>
                             
                         </li>
@@ -394,7 +410,7 @@
                             <div class="value">
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.manufacturerEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.manufacturerRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.manufacturerRu}
                                 </c:if>
                                 </div>
                             
@@ -408,7 +424,7 @@
                             <div class="value">
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.cncEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.cncRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.cncRu}
                                 </c:if>
                                 </div>
                         </li>
@@ -417,7 +433,7 @@
                             <div class="value">
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.cncFullEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.cncFullRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.cncFullRu}
                                 </c:if>
                                 </div>
                         </li>
@@ -427,7 +443,7 @@
                             <div class="value">
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.machineConditionEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.machineConditionRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.machineConditionRu}
                                 </c:if>
                                 </div>
                         </li>
@@ -451,7 +467,7 @@
                             <div class="value">
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.machineLocationEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.machineLocationRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.machineLocationRu}
                                 </c:if>
                                 </div>
                         </li>
@@ -479,7 +495,7 @@
 
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.workpieceEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.workpieceRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.workpieceRu}
                                 </c:if>
                                 </div>
                         </li>
@@ -495,7 +511,7 @@
 
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.workpieceDescriptionEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.workpieceDescriptionRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.workpieceDescriptionRu}
                                 </c:if>
                                 </div>
                         </li>
@@ -530,7 +546,7 @@
                             <div class="value">
                                 <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.descriptionEn}
                                 </c:if>
-                                <c:if test="${pageContext.response.locale == 'ru'}">${automatedLine.descriptionRu}
+                                <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.descriptionRu}
                                 </c:if>
                             </div>
                         </li>

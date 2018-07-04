@@ -85,7 +85,7 @@
                         <!--</li>--> 
   
                        <li class="breadcrumb-item current">
-                            <a href="#">automated line</a>
+                            <a href="#"><spring:message code="all_departments.automated_line" text="Aggregate machine" /> </a>
                         </li> 
                     </ul>
                 </li><!-- /.breadcrumb-nav-holder -->
