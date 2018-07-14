@@ -65,7 +65,7 @@ final private String COMPARE_LIGHT = "compare-light";
 //        @RequestMapping(value =  "/compare/light/add" , method = RequestMethod.GET)
         @RequestMapping(value =  "/compare-light-add" , method = RequestMethod.GET)
     public String addProductToCompareList( 
-            @RequestParam(value = "id") String id, 
+            @RequestParam(value = "id") Integer id,
             @RequestParam(value = "pagereturn") String pagereturn, 
             HttpSession session ) {
        
@@ -89,7 +89,7 @@ final private String COMPARE_LIGHT = "compare-light";
 
     
         @RequestMapping(value = "/compare-light-del-{id}", method = RequestMethod.GET)
-    public String delfromcompare(@PathVariable("id") String id, HttpSession session) {
+    public String delfromcompare(@PathVariable("id") Integer id, HttpSession session) {
    
     CompareCartLight compareCartLight = (CompareCartLight) session.getAttribute("compareCartLight");
     if (compareCartLight==null)  compareCartLight = new CompareCartLight();

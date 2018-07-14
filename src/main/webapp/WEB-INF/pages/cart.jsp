@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://some.thing/mine" prefix="a" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -110,16 +111,23 @@
 -->       <c:forEach var="item" items="${cart.items}">
             <div class="row no-margin cart-item">
                 <div class="col-xs-12 col-sm-2 no-margin">
-                    <a href="/from_cart?id=${item.product.id}&model=${item.product.model}" class="thumb-holder">
-                        <img class="lazy" alt="" width="73" height="73" src="resources/assets/images/products/${item.product.photo1}" />
-                    </a>
+                    <c:if test="${a:hasProperty(item.product, 'model')}">
+                        <a href="/from_cart?id=${item.product.id}&model=${item.product.model}" class="thumb-holder">
+                            <img class="lazy" alt="" width="73" height="73" src="resources/assets/images/products/${item.product.photo1}" />
+                        </a>
+                    </c:if>
+                    <c:if test="${a:hasProperty(item.product, 'modelEn')}">
+                        <a href="/from_cart?id=${item.product.id}&model=${item.product.modelEn}" class="thumb-holder">
+                            <img class="lazy" alt="" width="73" height="73" src="resources/assets/images/products/${item.product.photo1}" />
+                        </a>
+                    </c:if>
                 </div>
 
                 <div class="col-xs-12 col-sm-5 ">
                     <div class="title">
-                        <a href="/from_cart?id=${item.product.id}&model=${item.product.model}">${item.product.model}</a>
+                        <a href="/from_cart?id=${item.product.id}&model=${item.product.modelEn}">${item.product.modelEn}</a>
                     </div>
-                    <div class="brand">${item.product.year} / location: ${item.product.machinelocation} / id: ${item.product.productid}  </div>
+                    <div class="brand">${item.product.year} / location: ${item.product.machineLocationEn} / id:  </div>
                 </div> 
 
                 
@@ -130,12 +138,12 @@
                     <div class="quantity">
                         <div class="le-quantity">
                               <form>
-            <a class="minus" href="#reduce" onclick="window.location.assign('/updatequantity?id=${item.product.id}&model=${item.product.model}&quantity=${item.quantity-1}');"></a>
+            <a class="minus" href="#reduce" onclick="window.location.assign('/updatequantity?id=${item.product.id}&model=${item.product.modelEn}&quantity=${item.quantity-1}');"></a>
                                 <!--<a class="minus" href="#reduce"></a>-->
             <input name="quantity" readonly="readonly" type="text"  value="${item.quantity}" /> </a> 
         <!--<input name="quantity" readonly="readonly" type="text" value="${item.quantity}" />-->
                                 <!--<a class="plus" href="#add"></a>-->
-            <a class="plus" href="#add"  onclick="window.location.assign('/updatequantity?id=${item.product.id}&model=${item.product.model}&quantity=${item.quantity+1}');"></a> 
+            <a class="plus" href="#add"  onclick="window.location.assign('/updatequantity?id=${item.product.id}&model=${item.product.modelEn}&quantity=${item.quantity+1}');"></a>
                             
                             
                           
@@ -159,7 +167,7 @@
                         </sec:authorize>
                     </div>
 
-                    <a class="close-btn" href="updatequantity.htm?id=${item.product.id}&model=${item.product.model}&quantity=0"></a>
+                    <a class="close-btn" href="updatequantity.htm?id=${item.product.id}&model=${item.product.modelEn}&quantity=0"></a>
                 </div>
             </div> 
                     <!--/.cart-item--> 
@@ -275,7 +283,7 @@
 
         <div class="col-xs-12 col-md-3 no-margin sidebar ">
             <div class="widget cart-summary">
-                <h1 class="border">shopping cart</h1>
+                <h1 class="border"><spring:message code="common.shopping_cart" text="shopping cart"/></h1>
                 <div class="body">
                     <ul class="tabled-data no-border inverse-bold">
                         <li>

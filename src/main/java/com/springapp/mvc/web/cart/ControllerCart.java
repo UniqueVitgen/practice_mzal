@@ -6,6 +6,9 @@ package com.springapp.mvc.web.cart;
 //import dao.orders.OrderDaoImpl;
 
 
+import com.springapp.light.domain.AutomatedLine;
+import com.springapp.light.service.AutomatedLineService;
+import com.springapp.light.service.LighOfficeService;
 import com.springapp.mvc.domain.message.Message;
 import com.springapp.mvc.util.PrintInFile;
 import com.springapp.mvc.util.cart.Product;
@@ -53,6 +56,12 @@ public class ControllerCart extends PrintInFile {
     
     @Autowired
     OrdersService ordersService;
+
+    @Autowired
+    AutomatedLineService automatedLineService;
+
+    @Autowired
+    LighOfficeService lighService;
     
 
     
@@ -84,12 +93,18 @@ public class ControllerCart extends PrintInFile {
            
         Product product = null;
         Product p ;
-    
-//        if((p = vmcService.getVmc(id, model))!=null) product = p; 
-     
-  
+
+          String search_page = (String) session.getAttribute("search");
+          if(search_page.equals("automated_line")) {
+              if((p = automatedLineService.getProduct(id))!=null) product = p;
+          }
+          else {
+              if(search_page.equals("light")) {
+                  if((p = lighService.getLightById(id)) !=null) product = p;
+              }
+          }
         if(product!=null)  cart.addItem(product);
-        
+
  
         session.setAttribute("cart", cart); 
         String currentpagewithpage;
@@ -134,46 +149,50 @@ public class ControllerCart extends PrintInFile {
 //       temperary.setModel(model);
 //       Product prod = temperary;
 //       //----!!! end - Кастыль
+
+        Product prod = null, p;
+         if(( p = automatedLineService.getProduct(id))!=null) prod = p;
 //
-//       shoppingCart.update(prod, "0"); // delete from compare
-//       session.setAttribute("cart", shoppingCart);
+       shoppingCart.update(prod, "0"); // delete from compare
+       session.setAttribute("cart", shoppingCart);
 //   
-//         String currentpagewithpage = (String)session.getAttribute("currentpagewithpage");              
-//          if (currentpagewithpage == null) currentpagewithpage = "index";
+         String currentpagewithpage = (String)session.getAttribute("currentpagewithpage");
+          if (currentpagewithpage == null) currentpagewithpage = "index";
        
-          return "redirect:";
-//                  +currentpagewithpage;  
+          return "redirect:"  +currentpagewithpage;
     }
     
 
     
-//    	@RequestMapping(value = "/updatequantity", method = RequestMethod.GET)
-//	public String Minus(    @RequestParam(value = "id") int id, 
-//                                @RequestParam(value = "model") String model, 
-//                                @RequestParam(value = "quantity") int quantity, 
-//                                HttpSession session ) {
-//
-//         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-//        if (cart==null)  cart = new ShoppingCart();
-////        Vmc hmc = vmcDaoImpl.getVmc(id);
-//        
-//        ///---- !!! - Кастыль
+    	@RequestMapping(value = "/updatequantity", method = RequestMethod.GET)
+	public String Minus(    @RequestParam(value = "id") int id,
+                                @RequestParam(value = "model") String model,
+                                @RequestParam(value = "quantity") int quantity,
+                                HttpSession session ) {
+
+         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+        if (cart==null)  cart = new ShoppingCart();
+//        Vmc hmc = vmcDaoImpl.getVmc(id);
+
+        ///---- !!! - Кастыль
 //       Vmc p   = new Vmc();
 //       p.setId(id);
 //       p.setModel(model);
 //       Product prod = p;
-//       //----!!! end - Кастыль
-//       
-//        cart.update(prod, ""+quantity); // We do less on 1 position
-//
-//         session.setAttribute("cart", cart);
-//           
-//         String currentpagewithpage = (String)session.getAttribute("currentpagewithpage");              
-//          if (currentpagewithpage == null) currentpagewithpage = "index";
-//         
-//         
-//	return "redirect:"+currentpagewithpage;  
-//	}
+       //----!!! end - Кастыль
+            Product prod = null, p;
+            if(( p = automatedLineService.getProduct(id))!=null) prod = p;
+
+        cart.update(prod, ""+quantity); // We do less on 1 position
+
+         session.setAttribute("cart", cart);
+
+         String currentpagewithpage = (String)session.getAttribute("currentpagewithpage");
+          if (currentpagewithpage == null) currentpagewithpage = "index";
+
+
+	return "redirect:"+currentpagewithpage;
+	}
     
 
     /// ------------  </ Basket  :End > ---------------   
@@ -251,7 +270,12 @@ String dateInString = "2017-01-01";
       List <ShoppingCartItem> list =   cart.getItems();
   String query ="";    
       for(ShoppingCartItem ttt: list){
-          query += ttt.getProduct().getProductid();
+          try  {
+              query += ttt.getProduct().getProductid();
+          }
+          catch (Exception ex) {
+
+          }
           query += "<br>->" + ttt.getProduct().getModel();
           query += "<br>->" + ttt.getProduct().getCountry();
           query += "<br>";

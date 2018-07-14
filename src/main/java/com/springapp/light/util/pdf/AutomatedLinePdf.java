@@ -109,11 +109,11 @@ public class AutomatedLinePdf {
 //        itemTable.setWidths(new float[]{1f, 1f, 1f, 1f});
         itemTable.setWidths(new float[]{1f, 1f, 1f});
 
-        Font fontBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 //        Font font = new Font(Font.FontFamily.TIMES_ROMAN,12);
         BaseFont times =
                 BaseFont.createFont("c:/windows/fonts/times.ttf","cp1251",BaseFont.EMBEDDED);
         Font font = new Font(times, 12);
+        Font fontBold = new Font(times, 12, Font.BOLD);
 
         String workingDir = System.getProperty("user.dir");
         System.out.println("Current working directory : " + workingDir);
@@ -171,7 +171,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("Type", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Type of machine / Тип станка", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(light.getTypeEn(), font));
         itemCells[2] = new PdfPCell(new Paragraph(light.getTypeRu(), font));
         for (int i = 0; i < 3; i++) {
@@ -188,7 +188,7 @@ public class AutomatedLinePdf {
 //        }
 
 //        &
-        itemCells[0] = new PdfPCell(new Paragraph("model", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Модель линии ", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(""+light.getModelEn(), font));
         itemCells[2] = new PdfPCell(new Paragraph(""+light.getModelRu(), font));
         for (int i = 0; i < 3; i++) {
@@ -198,7 +198,7 @@ public class AutomatedLinePdf {
         }
 
 
-        itemCells[0] = new PdfPCell(new Paragraph("Manufacturer", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Manufacturer/Производитель", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getManufacturerEn()), font));
         itemCells[2] = new PdfPCell(new Paragraph(String.valueOf(light.getManufacturerRu()), font));
         for (int i = 0; i < 3; i++) {
@@ -207,7 +207,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("cnc", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("CNC / Система ЧПУ", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(light.getCncEn(), font));
         itemCells[2] = new PdfPCell(new Paragraph(light.getCncRu(), font));
 
@@ -229,7 +229,7 @@ public class AutomatedLinePdf {
 //            }
 //        }
 
-        itemCells[0] = new PdfPCell(new Paragraph("cnc full", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("CNC Full/Система ЧПУ (полная)", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(light.getCncFullEn(), font));
         itemCells[2] = new PdfPCell(new Paragraph(light.getCncFullRu(), font));
 //        itemCells[2] = new PdfPCell(new Paragraph("", font));
@@ -240,7 +240,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("machine condition", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Machine condition / Состояние станка", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getMachineConditionEn()), font));
         itemCells[2] = new PdfPCell(new Paragraph(String.valueOf(light.getMachineConditionRu()), font));
         for (int i = 0; i < 3; i++) {
@@ -248,7 +248,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("machine location", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Machine location / нахождение", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(light.getMachineLocationEn(), font));
         itemCells[2] = new PdfPCell(new Paragraph(light.getMachineLocationRu(), font));
 
@@ -258,7 +258,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("year", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Year/Год производства ", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getYear()), font));
         itemCells[2] = new PdfPCell(new Paragraph("", font));
         for (int i = 0; i < 3; i++) {
@@ -267,7 +267,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("workpiece", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Обрабатываемая деталь", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(light.getWorkpieceEn(), font));
         itemCells[2] = new PdfPCell(new Paragraph(light.getWorkpieceRu(), font));
 
@@ -278,7 +278,7 @@ public class AutomatedLinePdf {
         }
 
 
-        itemCells[0] = new PdfPCell(new Paragraph("workpiece weight", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Вес детали, кг", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getWorkpieceWeight()), font));
         itemCells[2] = new PdfPCell(new Paragraph(String.valueOf(""), font));
         for (int i = 0; i < 3; i++) {
@@ -286,8 +286,35 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("workpiece photo1", fontBold));
-        itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getWorkpiecePhoto1()), font));
+//        itemCells[0] = new PdfPCell(new Paragraph("workpiece photo1", fontBold));
+//        itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getWorkpiecePhoto1()), font));
+//        itemCells[2] = new PdfPCell(new Paragraph("", font));
+
+
+        itemCells[0] = new PdfPCell(new Paragraph("Фото детали 1 ", fontBold));
+        try {
+            img = Image.getInstance(path + "/assets/images/products/" + light.getWorkpiecePhoto1());
+            img.setScaleToFitHeight(false);
+            itemCells[1] = new PdfPCell(img, true);
+        } catch (Exception e) {
+            itemCells[1] = new PdfPCell(new Paragraph(""));
+        }
+        itemCells[2] = new PdfPCell(new Paragraph(""));
+
+        for (int i = 0; i < 3; i++) {
+            itemCells[i].setBackgroundColor(new BaseColor(238, 238, 238));
+            itemCells[i].setBorderColor(new BaseColor(22, 22, 22));
+            itemTable.addCell(itemCells[i]);
+        }
+
+        itemCells[0] = new PdfPCell(new Paragraph("Фото детали 2 ", fontBold));
+        try {
+            img = Image.getInstance(path + "/assets/images/products/" + light.getWorkpiecePhoto2());
+            img.setScaleToFitHeight(false);
+            itemCells[1] = new PdfPCell(img, true);
+        } catch (Exception e) {
+            itemCells[1] = new PdfPCell(new Paragraph(""));
+        }
         itemCells[2] = new PdfPCell(new Paragraph("", font));
 
         for (int i = 0; i < 3; i++) {
@@ -296,17 +323,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("workpiece photo2", fontBold));
-        itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getWorkpiecePhoto2()), font));
-        itemCells[2] = new PdfPCell(new Paragraph("", font));
-
-        for (int i = 0; i < 3; i++) {
-            itemCells[i].setBackgroundColor(new BaseColor(238, 238, 238));
-            itemCells[i].setBorderColor(new BaseColor(22, 22, 22));
-            itemTable.addCell(itemCells[i]);
-        }
-
-        itemCells[0] = new PdfPCell(new Paragraph("workpiece description", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Описание детали  ", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getWorkpieceDescriptionEn()), font));
         itemCells[2] = new PdfPCell(new Paragraph(String.valueOf(light.getWorkpieceDescriptionRu()), font));
 
@@ -316,7 +333,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("weight, kg", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Вес станка, кг", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getWeight()), font));
         itemCells[2] = new PdfPCell(new Paragraph("", font));
 
@@ -326,7 +343,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("dimensions", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Габариты станка , метров", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getDimensions()), font));
         itemCells[2] = new PdfPCell(new Paragraph("", font));
         for (int i = 0; i < 3; i++) {
@@ -335,7 +352,7 @@ public class AutomatedLinePdf {
             itemTable.addCell(itemCells[i]);
         }
 
-        itemCells[0] = new PdfPCell(new Paragraph("productivity", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Производительность  деталей / час", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getProductivity()), font));
         itemCells[2] = new PdfPCell(new Paragraph("", font));
         for (int i = 0; i < 3; i++) {
@@ -345,7 +362,7 @@ public class AutomatedLinePdf {
         }
 
 //        if(!light.getDimmingFunction().equals(""))
-        itemCells[0] = new PdfPCell(new Paragraph("price", fontBold));
+        itemCells[0] = new PdfPCell(new Paragraph("Price линии", fontBold));
         itemCells[1] = new PdfPCell(new Paragraph(String.valueOf(light.getPrice()), font));
         itemCells[2] = new PdfPCell(new Paragraph("", font));
         for (int i = 0; i < 3; i++) {

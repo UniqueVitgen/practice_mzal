@@ -62,7 +62,7 @@ public class ParserExcelLightOffice  {
         printInFile("readLightOffice.txt", "3 getModel = " + lightOffice.getModel());
         
         df.formatCellValue(rowIterator.next().getCell(1)).trim();
-        lightOffice.setUrl(getUrl(lightOffice.getModel())); lightOffice.setId(getID(lightOffice.getModel()));
+        lightOffice.setUrl(getUrl(lightOffice.getModel())); lightOffice.setId(Integer.parseInt(getID(lightOffice.getModel())));
         printInFile("readLightOffice.txt", "4 setUrl"  );
         
         lightOffice.setManufacturer(df.formatCellValue(rowIterator.next().getCell(1)).trim()); 

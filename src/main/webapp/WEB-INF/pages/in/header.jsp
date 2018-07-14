@@ -128,6 +128,13 @@
         </a>
     </div>
 </c:if>
+<c:if test="${compareCartAutomatedLine.numberOfItems>0}" >
+    <div class="compare">
+         <a href="/compare-automated-line">
+              <i class="fa fa-exchange"></i> <spring:message code="all_departments.automated_line" text="Aggregate machine" /> <span class="value">${compareCartAutomatedLine.numberOfItems}</span>
+         </a>
+    </div>
+</c:if>
 
 <c:if test="${compareCartApartment.numberOfItems>0}" >
     <div class="compare">
@@ -170,21 +177,23 @@
                         <div class="row">
                             <div class="col-xs-4 col-sm-4 no-margin text-center">
                                 <div class="thumb">
-                                    <a href="/from_cart?id=${prod.product.id}&model=${prod.product.model}">
+                                    <a href="/from_cart?id=${prod.product.id}&model=${prod.product.modelEn}">
                                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/images/products/${prod.product.photo1}" />
                                     </a>
                                 </div>
                             </div>
                             <div class="col-xs-8 col-sm-8 no-margin">
-                                <div class="title">${prod.product.model} (id:${prod.product.productid}) </div>
+                                <div class="title">${prod.product.modelEn}
+                                    <%--(id:${prod.product.productid}) --%>
+                                </div>
                                 <sec:authorize access="hasRole('ROLE_USER')">
                                     <div class="price">${prod.product.price} </div>
                                 </sec:authorize>
-                                <div class="price">${prod.quantity} units</div>
+                                <div class="price">${prod.quantity} <spring:message code="common.units" text="units"/> </div>
                             </div>
                         </div>
                         <!--<a class="close-btn" href="/del-from-basket?id=${prod.product.id}&page=index"></a>-->
-                        <a class="close-btn" href="/del-from-basket?id=${prod.product.id}&model=${prod.product.model}"></a>
+                        <a class="close-btn" href="/del-from-basket?id=${prod.product.id}&model=${prod.product.modelEn}"></a>
                     </div>
                 </li>
 </c:forEach>
@@ -228,10 +237,10 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6">
                                 <!--<a href="cart.html.html" class="le-button inverse">View cart</a>-->
-                                <a href="/cart" class="le-button inverse">View cart</a>
+                                <a href="/cart" class="le-button inverse"><spring:message code="common.View_cart" text="View cart" /></a>
                             </div>
                             <div class="col-xs-12 col-sm-6">
-                                <a href="/checkout" class="le-button">Checkout</a>
+                                <a href="/checkout" class="le-button"><spring:message code="common.Checkout" text="Checkout" /></a>
                                 <!--<a href="checkout.html" class="le-button">Checkout</a>-->
                             </div>
                         </div>

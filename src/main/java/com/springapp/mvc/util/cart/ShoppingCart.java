@@ -33,11 +33,10 @@ double total;
         for (ShoppingCartItem scItem : items) {
 //   if (scItem.getProduct().getId() == product.getId()) {
             
-    if (scItem.getProduct().getId().
-                                    equals(product.getId()) 
+    if (scItem.getProduct().getId().equals(product.getId())
        && 
         scItem.getProduct().getModel().
-                                        equals( product.getModel() )   
+                                        equals( product.getModel() )
         ) {
         newItem = false;
         scItem.incrementQuantity();
@@ -60,8 +59,7 @@ double total;
                 ShoppingCartItem item = null;
                 for (ShoppingCartItem scItem : items) {
 //                if (scItem.getProduct().getId() == product.getId()) {
-                if (scItem.getProduct().getId().
-                                                equals( product.getId() )
+                if (scItem.getProduct().getId().equals(product.getId())
                       &&
                          scItem.getProduct().getModel().
                                                         equals( product.getModel() )

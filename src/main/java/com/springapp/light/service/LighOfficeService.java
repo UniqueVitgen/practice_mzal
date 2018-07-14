@@ -14,6 +14,8 @@ import com.springapp.light.domain.LightOfficeType;
 
 
 import java.util.List;
+
+import com.springapp.mvc.util.cart.Product;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -25,7 +27,7 @@ public interface LighOfficeService {
   public void uploadImagesLight(String path, MultipartFile[] images);
 //    public Wesold getWesold(int id);
     public LightOffice getLightByUrl(String url);
-    public LightOffice getLightById(String id);
+    public LightOffice getLightById(int id);
     
     public  List<LightOffice> getListLighByIds(String ids);
     public  List<LightOffice> getListLightFromSearch(String word);
@@ -34,7 +36,8 @@ public interface LighOfficeService {
     public List<LightOffice> getListLightOffice(String emergency, String powers, String size, String type);
     public void uploadLightOffice(String path, MultipartFile[] file);
 
-    
+
+    public Product getProduct(Integer id);
 
     
     public List<LightOfficePower> getListLightOfficePower();

@@ -32,8 +32,9 @@ public class AutomatedLineDaoImpl extends PrintInFile implements AutomatedLineDa
 
     @Override
     @SuppressWarnings("unchecked")
-    public AutomatedLine getLightById(String id) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from AutomatedLine where id='" + id + "'");
+    public AutomatedLine getLightById(int id) {
+//        return (AutomatedLine) sessionFactory.getCurrentSession().createQuery("from AutomatedLine where model_en LIKE '%" + id + "%' ORDER BY model_en DESC").list().get(0);
+        Query query = sessionFactory.getCurrentSession().createQuery("from AutomatedLine where id=" + id + "");
         return (AutomatedLine) query.uniqueResult();
     }
 
@@ -88,8 +89,12 @@ public class AutomatedLineDaoImpl extends PrintInFile implements AutomatedLineDa
     @Override
     @SuppressWarnings("unchecked")
     public List<AutomatedLine> getListLighByIds(String[] idsArr) {
+        Integer[] idsArrInt = new Integer[idsArr.length];
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AutomatedLine.class);
-        if (idsArr != null && !idsArr[0].equals("")) criteria.add(Restrictions.in("id", idsArr));
+        for(int i = 0; i < idsArr.length; i++) {
+            idsArrInt[i] = Integer.parseInt(idsArr[i]);
+        }
+        if (idsArr != null && !idsArr[0].equals("")) criteria.add(Restrictions.in("id", idsArrInt));
         return criteria.list();
     }
 

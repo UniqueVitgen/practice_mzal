@@ -11,7 +11,7 @@ public interface AutomatedLineDao {
     public List<AutomatedLine> getListAutomatedLine();
     public List<AutomatedLine> getListAutomatedLine(String emergency, String [] arrPowers, String size, String type);
     public AutomatedLine getLightByUrl(String url);
-    public AutomatedLine getLightById(String id);
+    public AutomatedLine getLightById(int id);
 //    public List<Video> getListVideo(String section);
 //    public List<Video> getList10RandomVideo();
 //    public List<Video> getListVideoFromRequest(String key);

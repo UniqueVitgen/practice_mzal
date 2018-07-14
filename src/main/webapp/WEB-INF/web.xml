@@ -11,6 +11,17 @@
         </param-value>
     </context-param>
 
+    <jsp-config>
+        <taglib>
+            <taglib-uri>
+                http://some.thing/mine
+            </taglib-uri>
+            <taglib-location>
+                /WEB-INF/tags/mytags.tld
+            </taglib-location>
+        </taglib>
+    </jsp-config>
+
     <!-- Создаёт контейнер Spring, разделяемый всеми сервлетами и фильтрами -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

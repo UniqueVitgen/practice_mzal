@@ -104,7 +104,7 @@
 
             <!-- ========================================= PRODUCT FILTER ========================================= -->
 <div class="widget">
-    <h1><spring:message code="lightall.productfilters" text="Product Filters" /></h1>
+    <h1><spring:message code="all_departments.automated_line" text="Aggregate Machine" /></h1>
     <div class="body bordered"> <!-- body -->
         
         
@@ -213,22 +213,22 @@
 
           
   <!-- Emergency Loght-->
-    <div class="category-filter">
-        <h2><spring:message code="lightall.emergency" text="Emergency" /></h2>
-<!--           <hr>-->
-        <ul>
+    <%--<div class="category-filter">--%>
+        <%--<h2><spring:message code="lightall.emergency" text="Emergency" /></h2>--%>
+<%--<!--           <hr>-->--%>
+        <%--<ul>--%>
 
-            <li>
-                
-             <input class="le-checkbox"   
-                <c:if test="${emergency=='yes'}">checked</c:if>        
-                    name="emergency" type="checkbox" value="yes"/>
+            <%--<li>--%>
+                <%----%>
+             <%--<input class="le-checkbox"   --%>
+                <%--<c:if test="${emergency=='yes'}">checked</c:if>        --%>
+                    <%--name="emergency" type="checkbox" value="yes"/>--%>
 
-                <label><spring:message code="lightall.emergency" text="Emergency" /></label>
-            </li>
+                <%--<label><spring:message code="lightall.emergency" text="Emergency" /></label>--%>
+            <%--</li>--%>
 
-        </ul>
-    </div>
+        <%--</ul>--%>
+    <%--</div>--%>
 
             
             
@@ -314,9 +314,9 @@
             </c:if>
 
             <br/>
-            <button class="le-button small">
-              <spring:message code="lightall.filter" text="Filter Light" /> 
-            </button>   
+            <%--<button class="le-button small">--%>
+              <%--<spring:message code="lightall.filter" text="Filter Light" /> --%>
+            <%--</button>   --%>
             
          </form:form>  
  
@@ -355,8 +355,8 @@
 
             <div class="grid-list-buttons">
                 <ul>
-                    <li class="grid-list-button-item active"><a data-toggle="tab" href="#grid-view"><i class="fa fa-th-large"></i> Grid</a></li>
-                    <li class="grid-list-button-item "><a data-toggle="tab" href="#list-view"><i class="fa fa-th-list"></i> List</a></li>
+                    <li class="grid-list-button-item active"><a data-toggle="tab" href="#grid-view"><i class="fa fa-th-large"></i><spring:message code="common.Grid" text="Grid"/></a></li>
+                    <li class="grid-list-button-item "><a data-toggle="tab" href="#list-view"><i class="fa fa-th-list"></i> <spring:message code="common.List" text="List"/></a></li>
                 </ul>
             </div>
         </div>
@@ -388,34 +388,55 @@
                                     <div class="title">
                                         <a href="/automated_line-${light.url}"> ${light.modelEn}  </a>
                                     </div>
-                                    <div class="brand"><spring:message code="lightall.type" text="Type" />:  ${light.typeEn}</div>
+                                    <div class="brand"><spring:message code="lightall.type" text="Type" />:
+                                        <c:if test="${pageContext.response.locale == 'en'}">${light.typeEn}
+                                        </c:if>
+                                        <c:if test="${pageContext.response.locale == 'russia'}">${light.typeEn}
+                                        </c:if>  </div>
 
                                     <div class="brand">
-                                        ${light.cncEn} <spring:message code="lightall.watt" text="watt" />,
-                                        ${light.cncFullEn} <spring:message code="lightall.lm" text="lm" />,
-                                        ${light.machineLocationEn},
-                                        ${light.workpieceEn} C
+
+                                        <c:if test="${pageContext.response.locale == 'en'}">${light.cncEn}
+                                        </c:if>
+                                        <c:if test="${pageContext.response.locale == 'russia'}">${light.cncRu}
+                                        </c:if>  <spring:message code="lightall.watt" text="watt" />,
+                                        <c:if test="${pageContext.response.locale == 'en'}">${light.cncFullEn}
+                                        </c:if>
+                                        <c:if test="${pageContext.response.locale == 'russia'}">${light.cncFullRu}
+                                        </c:if> <spring:message code="lightall.lm" text="lm" />,
+
+                                        <c:if test="${pageContext.response.locale == 'en'}">${light.machineLocationEn}
+                                        </c:if>
+                                        <c:if test="${pageContext.response.locale == 'russia'}">${light.machineLocationRu}
+                                        </c:if>
+                                    ,
+
+
+                                        <c:if test="${pageContext.response.locale == 'en'}">${light.workpieceEn}
+                                        </c:if>
+                                        <c:if test="${pageContext.response.locale == 'russia'}">${light.workpieceRu}
+                                        </c:if>
                                     </div>
 
-                                    <div class="brand">w
-                                        <spring:message code="lightall.size" text="Size" />: ${light.numOfWorkingStaff}
-                                    </div>
+                                    <%--<div class="brand">w--%>
+                                        <%--<spring:message code="lightall.size" text="Size" />: ${light.numOfWorkingStaff}--%>
+                                    <%--</div>--%>
                                     
                                 </div>
                                 <div class="prices">
                                     <div class="price-current pull-right">$${light.price}</div>
                                     <sec:authorize access="hasRole('ROLE_USER')">
                                         <!--<div class="price-prev">${light.price}</div>-->
-                                        <div class="price-current pull-right">$${vmc.price}</div>
+                                        <div class="price-current pull-right">$${light.price}</div>
                                     </sec:authorize>
                                 </div>
                                 <div class="hover-area">
                                     <div class="add-cart-button">
-                                        <!--<a href="add-product-to-customer-basket?id=${vmc.id}&model=${vmc.modelEn}" class="le-button"><spring:message code="vmcs.addtocart" text="add to cart" /></a>-->
+                                        <a href="add-product-to-customer-basket?id=${light.id}&model=${light.modelEn}" class="le-button"><spring:message code="common.addtocart" text="add to cart" /></a>
                                     </div>
                                     <div class="wish-compare">
-                                        <!--<a class="btn-add-to-wishlist" href="add-product-to-wish-list?id=${vmc.id}">add to wishlist</a>-->
-                                        <a class="btn-add-to-compare" href="/compare-light-add?id=${light.id}&pagereturn=${currentpagewithpage}"><spring:message code="lightall.compare" text="Compare" /></a>
+                                        <%--<a class="btn-add-to-wishlist" href="add-product-to-wish-list?id=${light.id}">add to wishlist</a>--%>
+                                        <a class="btn-add-to-compare" href="/compare-automated-line-add?id=${light.id}&pagereturn=${currentpagewithpage}"><spring:message code="lightall.compare" text="Compare" /></a>
                                     </div>
                                 </div>
                                 
@@ -450,7 +471,7 @@
                 
    
                 
-         <c:if test="${!empty listLightOffice}">      
+         <c:if test="${!empty listAutomatedLine}">      
                 <div class="pagination-holder">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
@@ -484,7 +505,7 @@
             <div id="list-view" class="products-grid fade tab-pane ">
                 <div class="products-list">
                     
-     <c:forEach items="${listLightOffice}" var="light">
+     <c:forEach items="${listAutomatedLine}" var="light">
 
         <div class="product-item product-item-holder">
             <!--<div class="ribbon red"><span>sale</span></div>--> 
@@ -501,9 +522,12 @@
                     <div class="body">
                         <div class="label-discount green">-10% sale</div>
                         <div class="title">
-                            <a href="/automated_line-${light.url}">${light.manufacturerEn} ${light.modelEn}</a>
+                            <a href="/automated_line-${light.url}"><c:if test="${pageContext.response.locale == 'en'}">${light.manufacturerEn} ${light.modelEn}
+                            </c:if>
+                                <c:if test="${pageContext.response.locale == 'russia'}">${light.manufacturerRu} ${light.modelRu}
+                                </c:if></a>
                         </div>
-                            <div class="brtand">${product.year}/ location: ${product.machinelocation}
+                            <div class="brtand">${light.year}/ location: ${light.machineLocationEn}
                             <br> L*H*B: ${light.weight}
                             </div>
                             <!--<div class="brand"></div>-->
@@ -511,7 +535,7 @@
                             <p> </p>
                         </div>
                         <div class="addto-compare">
-                            <!--<a class="btn-add-to-compare" href="/compare/light-office/add?id=${product.id}"><spring:message code="vmcs.addtocomparelist" text="add to compare list" /></a>-->
+                            <a class="btn-add-to-compare" href="/compare-automated-line-add?id=${light.id}&pagereturn=${currentpagewithpage}"><spring:message code="lightall.compare" text="add to compare list" /></a>
                         </div>
                     </div>
                 </div><!-- /.body-holder -->
@@ -532,7 +556,7 @@
 
                 </div><!-- /.products-list -->
 
- <c:if test="${!empty listLightOffice}">      
+ <c:if test="${!empty listAutomatedLine}">      
                 <div class="pagination-holder">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">

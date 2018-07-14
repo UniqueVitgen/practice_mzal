@@ -5,6 +5,8 @@
  */
 package com.springapp.light.domain;
 
+import com.springapp.mvc.util.cart.Product;
+
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -31,34 +33,35 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "LightOffice.findAll", query = "SELECT l FROM LightOffice l"),
     @NamedQuery(name = "LightOffice.findById", query = "SELECT l FROM LightOffice l WHERE l.id = :id"),
-    @NamedQuery(name = "LightOffice.findByType", query = "SELECT l FROM LightOffice l WHERE l.type = :type"),
-    @NamedQuery(name = "LightOffice.findByModel", query = "SELECT l FROM LightOffice l WHERE l.model = :model"),
-    @NamedQuery(name = "LightOffice.findByUrl", query = "SELECT l FROM LightOffice l WHERE l.url = :url"),
-    @NamedQuery(name = "LightOffice.findByManufacturer", query = "SELECT l FROM LightOffice l WHERE l.manufacturer = :manufacturer"),
-    @NamedQuery(name = "LightOffice.findByCountry", query = "SELECT l FROM LightOffice l WHERE l.country = :country"),
-    @NamedQuery(name = "LightOffice.findByDiffuser", query = "SELECT l FROM LightOffice l WHERE l.diffuser = :diffuser"),
-    @NamedQuery(name = "LightOffice.findByPower", query = "SELECT l FROM LightOffice l WHERE l.power = :power"),
-    @NamedQuery(name = "LightOffice.findByLuminousFlux", query = "SELECT l FROM LightOffice l WHERE l.luminousFlux = :luminousFlux"),
-    @NamedQuery(name = "LightOffice.findByLuminousFluxEmergency", query = "SELECT l FROM LightOffice l WHERE l.luminousFluxEmergency = :luminousFluxEmergency"),
-    @NamedQuery(name = "LightOffice.findByTemperatureGlow", query = "SELECT l FROM LightOffice l WHERE l.temperatureGlow = :temperatureGlow"),
-    @NamedQuery(name = "LightOffice.findBySize", query = "SELECT l FROM LightOffice l WHERE l.size = :size"),
-    @NamedQuery(name = "LightOffice.findBySizeInstallation", query = "SELECT l FROM LightOffice l WHERE l.sizeInstallation = :sizeInstallation"),
-    @NamedQuery(name = "LightOffice.findByCoefficientPulsation", query = "SELECT l FROM LightOffice l WHERE l.coefficientPulsation = :coefficientPulsation"),
-    @NamedQuery(name = "LightOffice.findByCoefficientPower", query = "SELECT l FROM LightOffice l WHERE l.coefficientPower = :coefficientPower"),
-    @NamedQuery(name = "LightOffice.findByTypeLidc", query = "SELECT l FROM LightOffice l WHERE l.typeLidc = :typeLidc"),
-    @NamedQuery(name = "LightOffice.findByIndexColor", query = "SELECT l FROM LightOffice l WHERE l.indexColor = :indexColor"),
-    @NamedQuery(name = "LightOffice.findBySecurity", query = "SELECT l FROM LightOffice l WHERE l.security = :security"),
-    @NamedQuery(name = "LightOffice.findByWeight", query = "SELECT l FROM LightOffice l WHERE l.weight = :weight"),
-    @NamedQuery(name = "LightOffice.findByTemperatureWork", query = "SELECT l FROM LightOffice l WHERE l.temperatureWork = :temperatureWork"),
-    @NamedQuery(name = "LightOffice.findByGuarantee", query = "SELECT l FROM LightOffice l WHERE l.guarantee = :guarantee"),
-    @NamedQuery(name = "LightOffice.findByDimmingFunction", query = "SELECT l FROM LightOffice l WHERE l.dimmingFunction = :dimmingFunction"),
-    @NamedQuery(name = "LightOffice.findByMountingType", query = "SELECT l FROM LightOffice l WHERE l.mountingType = :mountingType"),
-    @NamedQuery(name = "LightOffice.findByPrice", query = "SELECT l FROM LightOffice l WHERE l.price = :price"),
-    @NamedQuery(name = "LightOffice.findByPhoto1", query = "SELECT l FROM LightOffice l WHERE l.photo1 = :photo1"),
-    @NamedQuery(name = "LightOffice.findByPhoto2", query = "SELECT l FROM LightOffice l WHERE l.photo2 = :photo2"),
-    @NamedQuery(name = "LightOffice.findByPhoto3", query = "SELECT l FROM LightOffice l WHERE l.photo3 = :photo3"),
-    @NamedQuery(name = "LightOffice.findByVideo1", query = "SELECT l FROM LightOffice l WHERE l.video1 = :video1")})
-public class LightOffice implements Serializable {
+//    @NamedQuery(name = "LightOffice.findByType", query = "SELECT l FROM LightOffice l WHERE l.type = :type"),
+//    @NamedQuery(name = "LightOffice.findByModel", query = "SELECT l FROM LightOffice l WHERE l.model = :model"),
+//    @NamedQuery(name = "LightOffice.findByUrl", query = "SELECT l FROM LightOffice l WHERE l.url = :url"),
+//    @NamedQuery(name = "LightOffice.findByManufacturer", query = "SELECT l FROM LightOffice l WHERE l.manufacturer = :manufacturer"),
+//    @NamedQuery(name = "LightOffice.findByCountry", query = "SELECT l FROM LightOffice l WHERE l.country = :country"),
+//    @NamedQuery(name = "LightOffice.findByDiffuser", query = "SELECT l FROM LightOffice l WHERE l.diffuser = :diffuser"),
+//    @NamedQuery(name = "LightOffice.findByPower", query = "SELECT l FROM LightOffice l WHERE l.power = :power"),
+//    @NamedQuery(name = "LightOffice.findByLuminousFlux", query = "SELECT l FROM LightOffice l WHERE l.luminousFlux = :luminousFlux"),
+//    @NamedQuery(name = "LightOffice.findByLuminousFluxEmergency", query = "SELECT l FROM LightOffice l WHERE l.luminousFluxEmergency = :luminousFluxEmergency"),
+//    @NamedQuery(name = "LightOffice.findByTemperatureGlow", query = "SELECT l FROM LightOffice l WHERE l.temperatureGlow = :temperatureGlow"),
+//    @NamedQuery(name = "LightOffice.findBySize", query = "SELECT l FROM LightOffice l WHERE l.size = :size"),
+//    @NamedQuery(name = "LightOffice.findBySizeInstallation", query = "SELECT l FROM LightOffice l WHERE l.sizeInstallation = :sizeInstallation"),
+//    @NamedQuery(name = "LightOffice.findByCoefficientPulsation", query = "SELECT l FROM LightOffice l WHERE l.coefficientPulsation = :coefficientPulsation"),
+//    @NamedQuery(name = "LightOffice.findByCoefficientPower", query = "SELECT l FROM LightOffice l WHERE l.coefficientPower = :coefficientPower"),
+//    @NamedQuery(name = "LightOffice.findByTypeLidc", query = "SELECT l FROM LightOffice l WHERE l.typeLidc = :typeLidc"),
+//    @NamedQuery(name = "LightOffice.findByIndexColor", query = "SELECT l FROM LightOffice l WHERE l.indexColor = :indexColor"),
+//    @NamedQuery(name = "LightOffice.findBySecurity", query = "SELECT l FROM LightOffice l WHERE l.security = :security"),
+//    @NamedQuery(name = "LightOffice.findByWeight", query = "SELECT l FROM LightOffice l WHERE l.weight = :weight"),
+//    @NamedQuery(name = "LightOffice.findByTemperatureWork", query = "SELECT l FROM LightOffice l WHERE l.temperatureWork = :temperatureWork"),
+//    @NamedQuery(name = "LightOffice.findByGuarantee", query = "SELECT l FROM LightOffice l WHERE l.guarantee = :guarantee"),
+//    @NamedQuery(name = "LightOffice.findByDimmingFunction", query = "SELECT l FROM LightOffice l WHERE l.dimmingFunction = :dimmingFunction"),
+//    @NamedQuery(name = "LightOffice.findByMountingType", query = "SELECT l FROM LightOffice l WHERE l.mountingType = :mountingType"),
+//    @NamedQuery(name = "LightOffice.findByPrice", query = "SELECT l FROM LightOffice l WHERE l.price = :price"),
+//    @NamedQuery(name = "LightOffice.findByPhoto1", query = "SELECT l FROM LightOffice l WHERE l.photo1 = :photo1"),
+//    @NamedQuery(name = "LightOffice.findByPhoto2", query = "SELECT l FROM LightOffice l WHERE l.photo2 = :photo2"),
+//    @NamedQuery(name = "LightOffice.findByPhoto3", query = "SELECT l FROM LightOffice l WHERE l.photo3 = :photo3"),
+//    @NamedQuery(name = "LightOffice.findByVideo1", query = "SELECT l FROM LightOffice l WHERE l.video1 = :video1")
+})
+public class LightOffice implements Serializable, Product {
 
     @Size(max = 245)
     @Column(name = "photo4")
@@ -68,9 +71,10 @@ public class LightOffice implements Serializable {
     private String photo5;
 
     private static final long serialVersionUID = 1L;
+    @Id
     @Size(max = 255)
     @Column(name = "id")
-    private String id;
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 245)
@@ -148,6 +152,10 @@ public class LightOffice implements Serializable {
     @Size(max = 45)
     @Column(name = "index_color")
     private String indexColor;
+
+    @Size(max = 255)
+    @Column(name = "product_id")
+    private int productid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -175,7 +183,7 @@ public class LightOffice implements Serializable {
     @Column(name = "mounting_type")
     private String mountingType;
     @Column(name = "price")
-    private Integer price;
+    private int price;
     @Size(max = 245)
     @Column(name = "photo1")
     private String photo1;
@@ -222,12 +230,22 @@ public class LightOffice implements Serializable {
         this.guarantee = guarantee;
     }
 
-    public String getId() {
+    @Override
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public int getProductid() {
+        return productid;
+    }
+
+    public void setProductid(int productid) {
+        this.productid = productid;
     }
 
     public String getType() {
@@ -264,6 +282,11 @@ public class LightOffice implements Serializable {
 
     public String getCountry() {
         return country;
+    }
+
+    @Override
+    public int getYear() {
+        return 0;
     }
 
     public void setCountry(String country) {
@@ -406,11 +429,12 @@ public class LightOffice implements Serializable {
         this.mountingType = mountingType;
     }
 
-    public Integer getPrice() {
+    @Override
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

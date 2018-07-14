@@ -79,7 +79,7 @@
                 <li class="breadcrumb-nav-holder"> 
                     <ul>
                         <li class="breadcrumb-item current gray">
-                            <a href="#">Checkout Process</a>
+                            <a href="#"><spring:message text="Checkout Process" code="checkout.checkout_process"/> </a>
                         </li>
                     </ul>
                 </li><!-- /.breadcrumb-nav-holder -->
@@ -96,15 +96,15 @@
                 <!--<form action="checkout.htm" method="POST">-->
 <form:form action="${pageContext.request.contextPath}/checkout" method="POST" commandName="order">
             <div class="billing-address">
-                <h2 class="border h1">billing address</h2>
+                <h2 class="border h1"><spring:message code="checkout.billing_address" text="billing address"/> </h2>
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
-                            <label>first name*</label>
+                            <label><spring:message text="first name" code="common.firstname"/>*</label>
                             <!--<input class="le-input" >-->
                             <form:input  class="le-input"  path="firstname" name="firstname" type="text"/> <br/> <form:errors style="color:red;" path="firstname" cssClass="error" ></form:errors>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <label>last name*</label>
+                            <label><spring:message text="last name" code="common.lastname" />*</label>
                             <!--<input class="le-input" >-->
                             <form:input  class="le-input"  path="lastname" name="lastname" type="text"/> <br/> <form:errors style="color:red;" path="lastname" cssClass="error" ></form:errors>
                         </div>
@@ -112,7 +112,7 @@
 
                     <div class="row field-row">
                         <div class="col-xs-12">
-                            <label>company name*</label>
+                            <label><spring:message text="company name" code="common.company_name" />*</label>
                             <!--<input class="le-input" >-->
                              <form:input  class="le-input"  path="company" name="company" type="text"/> <br/> <form:errors style="color:red;" path="company" cssClass="error" ></form:errors>
                         </div>
@@ -120,13 +120,13 @@
 
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
-                            <label>street address*</label>
+                            <label><spring:message text="street address" code="common.street_address" />*</label>
                             <!--<input class="le-input" data-placeholder="street address" >-->
                         <form:input  class="le-input"  path="address" name="address" type="text"/> <br/> <form:errors style="color:red;" path="address" cssClass="error" ></form:errors>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <!--<label>&nbsp;</label>-->
-                            <label>town*</label>
+                            <label><spring:message text="town" code="common.city" />*</label>
                             <!--<input class="le-input" data-placeholder="town" >-->
                             <form:input  class="le-input" path="city" name="city" type="text"/> <br/> <form:errors style="color:red;" path="city" cssClass="error" ></form:errors>
                         </div>
@@ -134,18 +134,18 @@
 
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-4">
-                            <label>country*</label>
+                            <label><spring:message text="country" code="common.country" />*</label>
                             <!--<input class="le-input"  >-->
                             <form:input  class="le-input"  path="country" name="country" type="text"/> <br/> <form:errors style="color:red;" path="country" cssClass="error" ></form:errors>
                         </div>
                         <div class="col-xs-12 col-sm-4">
-                            <label>email address*</label>
+                            <label><spring:message text="email address" code="common.email_address" />*</label>
                             <!--<input class="le-input" >-->
                              <form:input  class="le-input"  path="email" name="email" type="text"/> <br/> <form:errors style="color:red;" path="email" cssClass="error" ></form:errors>
                         </div>
 
                         <div class="col-xs-12 col-sm-4">
-                            <label>phone number*</label>
+                            <label><spring:message text="phone number" code="common.phone_number" />*</label>
                             <!--<input class="le-input" >-->
                              <form:input  class="le-input"  path="phone" name="phone" type="text"/> <br/> <form:errors style="color:red;" path="phone" cssClass="error" ></form:errors>
                         </div>
@@ -188,8 +188,10 @@
                             </div>
 
                             <div class="col-xs-12 col-sm-9 ">
-                                <div class="title"><a href="#">${item.product.model} </a></div>
-                                <div class="brand">${item.product.manufacturer} / id: ${item.product.productid} / ${item.product.year}</div>
+                                <div class="title"><a href="#">${item.product.modelEn} </a></div>
+                                <div class="brand">${item.product.manufacturerEn}
+                                    <%--/ id: ${item.product.productid}--%>
+                                    / ${item.product.year}</div>
                             </div>
 
                             <div class="col-xs-12 col-sm-2 no-margin">

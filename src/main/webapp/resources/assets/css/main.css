@@ -2537,6 +2537,9 @@ header .top-cart-row .top-cart-holder .total-price-basket {
 .product-item-holder .prices {
   margin: 0 34px;
   padding: 11px 0;
+  display: flex;
+  text-align: right;
+  justify-content: space-evenly;
 }
 .product-item-holder .price-prev {
   display: inline-block;

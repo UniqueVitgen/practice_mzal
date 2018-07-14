@@ -85,7 +85,7 @@
                         <!--</li>--> 
   
                              <li class="breadcrumb-item">
-                                <a href="#"><spring:message code="all_departments.automated_line" text="Aggregate machine" /></a>
+                                <a href="/automated_line"><spring:message code="all_departments.automated_line" text="Aggregate machine" /></a>
                         </li> 
                         
                        <li class="breadcrumb-item current">
@@ -269,14 +269,19 @@
         <div class="no-margin col-xs-12 col-sm-7 body-holder">
     <div class="body">
         <!--<div class="star-holder inline"><div class="star" data-score="4"></div></div>-->
-        <div class="availability"><label>Availability:</label><span class="available">  in stock</span></div>
+        <div class="availability">
+
+            <c:if test="${pageContext.response.locale == 'en'}"><label>Availability:</label><span class="available">  in stock</span>
+            </c:if>
+            <c:if test="${pageContext.response.locale == 'russia'}"><label>В наличии:</label><span class="available">  на складе</span>
+            </c:if></div>
 
         <div class="title"><a href="#">
             <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.modelEn}
             </c:if>
             <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.modelRu}
-            </c:if>${automatedLine.modelEn}</a></div>
-        <div class="brand">  Type:
+            </c:if></a></div>
+        <div class="brand">  <spring:message code="lightall.type" text="Type"/>:
             <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.typeEn}
             </c:if>
             <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.typeRu}

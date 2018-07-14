@@ -67,10 +67,10 @@ public class ControllerAutomatedLine {
 
 //        mv.addObject("listLightType", AutomatedLineService.getListAutomatedLineType()); //  for   filter
 
-        mv.addObject("emergency", emergency); // it is need for feed back !!!!!!
-        mv.addObject("powers", powers); // it is need for feed back !!!!!!
-        mv.addObject("size", size); // it is need for feed back !!!!!!
-        mv.addObject("type", type); // it is need for feed back !!!!!!
+//        mv.addObject("emergency", emergency); // it is need for feed back !!!!!!
+//        mv.addObject("powers", powers); // it is need for feed back !!!!!!
+//        mv.addObject("size", size); // it is need for feed back !!!!!!
+//        mv.addObject("type", type); // it is need for feed back !!!!!!
 
 
         mv.addObject("message", new Message()); // it is need for feed back !!!!!!

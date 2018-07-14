@@ -5,6 +5,7 @@ import com.springapp.light.dao.AutomatedLineDao;
 import com.springapp.light.util.ImageUtilLight;
 import com.springapp.light.util.UploadMultipartFileUtilLight;
 import com.springapp.light.util.exel.ParserExcelAutomatedLine;
+import com.springapp.mvc.util.cart.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,11 +30,29 @@ public class AutomatedLineServiceImpl implements AutomatedLineService {
                 AutomatedLine AutomatedLine = ParserExcelAutomatedLine.readAutomatedLine(uploadFile);
                 AutomatedLineDao.saveAutomatedLine(AutomatedLine);
                 uploadFile.delete();
-                System.out.println("Successfully uploaded machine: " + file[i].getOriginalFilename());
+                System.out.println("Successfully uplgoaded machine: " + file[i].getOriginalFilename());
             } catch (IOException e) {
                 System.out.println("Failed to upload machine file: " + e.getMessage());
             }
         }
+    }
+
+    @Override @Transactional
+    public Product getProduct(Integer id) {
+        AutomatedLine automatedLine = getLightById(id);
+        Product product = automatedLine;
+        return product;
+    }
+
+    @Override @Transactional
+    public Product getProduct(AutomatedLine automatedLine) {
+        Product p = automatedLine;
+        return p;
+    }
+
+
+    public void setAutomatedLineDao(com.springapp.light.dao.AutomatedLineDao automatedLineDao) {
+        AutomatedLineDao = automatedLineDao;
     }
 
     @Override @Transactional
@@ -72,7 +91,7 @@ public class AutomatedLineServiceImpl implements AutomatedLineService {
 
 
     @Override @Transactional
-    public AutomatedLine getLightById(String id) {
+    public AutomatedLine getLightById(Integer id) {
         return  AutomatedLineDao.getLightById(id);
     }
 

@@ -57,8 +57,8 @@ public class LightOfficeDaoImpl extends PrintInFile implements LightOfficeDao{
 
     @Override
     @SuppressWarnings("unchecked")
-    public LightOffice getLightById(String id) { 
-        Query query = sessionFactory.getCurrentSession().createQuery("from LightOffice where id='" + id+ "'" );
+    public LightOffice getLightById(int id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from LightOffice where id=" + id+ "" );
         return (LightOffice) query.uniqueResult();
     }
     
@@ -99,7 +99,8 @@ public class LightOfficeDaoImpl extends PrintInFile implements LightOfficeDao{
     @Override
     @SuppressWarnings("unchecked")
     public List<LightOffice> getListLightOffice() {
-    return sessionFactory.getCurrentSession().createCriteria(LightOffice.class).addOrder(Order.desc("model")).list();
+//    return sessionFactory.getCurrentSession().createCriteria(LightOffice.class).addOrder(Order.desc("model")).list();
+        return sessionFactory.getCurrentSession().createQuery("from LightOffice  ORDER BY model DESC").list();
     }
     
     @Override

@@ -11,7 +11,7 @@
               
          
                 <li><a href="/light"><spring:message code="all_departments.light" text="Industrial lighting" /></a></li>
-                <li><a href="/automated_line"><spring:message code="all_departments.automated_line" text="Industrial Aggregate machine" /></a></li>
+                <li><a href="/automated_line"><spring:message code="all_departments.automated_line" text="Aggregate machine" /></a></li>
       
                 
                 

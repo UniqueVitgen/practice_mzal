@@ -15,6 +15,8 @@ import com.springapp.light.util.exel.ParserExcelLightOffice;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import com.springapp.mvc.util.cart.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,7 +42,15 @@ public class LighOfficeServiceImpl implements LighOfficeService {
             }
         }
     }
-    
+
+    @Override
+    public Product getProduct(Integer id) {
+        LightOffice automatedLine = getLightById(id);
+        Product product = automatedLine;
+        return product;
+
+    }
+
     @Override @Transactional
     public List<LightOffice> getListLightOffice() {
     return  lightOfficeDao.getListLightOffice();
@@ -98,7 +108,7 @@ public class LighOfficeServiceImpl implements LighOfficeService {
     
     
     @Override @Transactional
-    public LightOffice getLightById(String id) {
+    public LightOffice getLightById(int id) {
     return  lightOfficeDao.getLightById(id);
     }
     

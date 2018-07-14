@@ -1,5 +1,7 @@
 package com.springapp.light.domain;
 
+import com.springapp.mvc.util.cart.Product;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -74,7 +76,7 @@ import java.io.Serializable;
 //        @NamedQuery(name = "AutomatedLine.findByPhoto3", query = "SELECT l FROM AutomatedLine l WHERE l.photo3 = :photo3"),
 //        @NamedQuery(name = "AutomatedLine.findByVideo1", query = "SELECT l FROM AutomatedLine l WHERE l.video1 = :video1")
 })
-public class AutomatedLine implements Serializable {
+public class AutomatedLine implements Serializable, Product {
 
     private static final long serialVersionUID = 1L;
 
@@ -128,6 +130,22 @@ public class AutomatedLine implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "manufacturer_ru")
     private String manufacturerRu;
+
+    @Size(max = 255)
+    @Column(name = "product_id")
+    private Integer productid;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "country_en")
+    private String countryEn;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "country_ru")
+    private String countryRu;
 
 //    @Basic(optional = false)
 //    @NotNull
@@ -279,6 +297,7 @@ public class AutomatedLine implements Serializable {
         return serialVersionUID;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -414,6 +433,46 @@ public class AutomatedLine implements Serializable {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    @Override
+    public int getProductid() {
+        return productid;
+    }
+
+    @Override
+    public String getModel() {
+        return modelEn;
+    }
+
+    @Override
+    public String getManufacturer() {
+        return manufacturerEn;
+    }
+
+    @Override
+    public String getCountry() {
+        return countryEn;
+    }
+
+    public void setProductid(Integer productid) {
+        this.productid = productid;
+    }
+
+    public String getCountryEn() {
+        return countryEn;
+    }
+
+    public void setCountryEn(String countryEn) {
+        this.countryEn = countryEn;
+    }
+
+    public String getCountryRu() {
+        return countryRu;
+    }
+
+    public void setCountryRu(String countryRu) {
+        this.countryRu = countryRu;
     }
 
     public String getWorkpieceEn() {

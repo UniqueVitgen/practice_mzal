@@ -9,15 +9,15 @@ import java.util.Date;
 public interface Product {
     
     public Integer getId();
-    public String getProductid();
+    public int getProductid();
     public String getModel();
     public String getManufacturer();
     public String getCountry();
-    public Integer getYear();
-    public String getTypeurl();
-    public String getModelurl();
-    public String getMachinelocation();
+    public int getYear();
+//    public String getTypeurl();
+//    public String getModelurl();
+//    public String getMachinelocation();
     public String getPhoto1();
-    public Integer getPrice();
+    public int getPrice();
     
 }

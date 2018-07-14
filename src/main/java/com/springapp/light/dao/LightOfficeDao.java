@@ -23,7 +23,7 @@ public interface LightOfficeDao {
     public List<LightOffice> getListLightOffice();
     public List<LightOffice> getListLightOffice(String emergency, String [] arrPowers, String size, String type);
     public LightOffice getLightByUrl(String url);
-    public LightOffice getLightById(String id);
+    public LightOffice getLightById(int id);
 //    public List<Video> getListVideo(String section);
 //    public List<Video> getList10RandomVideo();
 //    public List<Video> getListVideoFromRequest(String key);

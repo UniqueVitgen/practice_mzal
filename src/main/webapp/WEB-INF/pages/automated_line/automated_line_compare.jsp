@@ -92,11 +92,13 @@
                           <%@include file="/WEB-INF/pages/in/breadcrumb_item.jsp" %>
                         <!--</li>--> 
                         <li class="breadcrumb-item current">
-                            <a href="light">Light</a>
+                            <a href="light">
+                                <spring:message code="all_departments.automated_line" text="Aggregate machine" /></a>
                         </li> 
                         <li class="breadcrumb-item current gray">
                             <!--<a href="index.php?page=compaore">Product Comparison</a>-->
-                            <a href="#">Light Comparison</a>
+                            <a href="#">
+                                <spring:message code="all_departments.automated_line" text="Aggregate machine" /> <spring:message code="common.Comparison" text="Comparison" /></a>
                         </li>
                     </ul>
                 </li> 
@@ -112,7 +114,7 @@
         <div class="inner-xs">
             <div class="page-header">
                 <h2 class="page-title">
-                    Light Comparison            
+                    <spring:message code="all_departments.automated_line" text="Aggregate machine" /> <spring:message code="common.Comparison" text="Comparison" />
                 </h2>
             </div>
         </div><!-- /.section-page-title -->
@@ -128,25 +130,25 @@
                     <tr>
                         <td>&nbsp;</td>
                        
-                   <c:forEach items="${listLight}" var="item1">
+                   <c:forEach items="${listAutomatedLine}" var="item1">
                        
                         <td class="text-center">
 
                             <div class="image-wrap">
                                 
-                                <a data-product_id="39" href="/compare-light-del-${item1.id}" class="remove-link">
+                                <a data-product_id="39" href="/compare-automated-line-del-${item1.id}" class="remove-link">
                                     <i class="fa fa-times-circle">  </i>
                                 </a>
                                 
                                 <!--<a href="vmc${item1.id}" > <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image" src="../resources/assets/images/products/${item1.photo1}">   </a>-->                     
-                                <a href="/light-${item1.url}" > <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image" src="resources/assets/images/products/${item1.photo1}">   </a>
+                                <a href="/automated_line-${item1.url}" > <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image" src="resources/assets/images/products/${item1.photo1}">   </a>
 
                             </div>
                                 
-                                <p><a href="/light-${item1.url}" > <strong>${item1.model}</strong> </a> </p>
-                                <c:if test="${item1.luminousFluxEmergency > 0}">
-                                    <p > <spring:message code="lightall.emergency" text="Emergency" /> </p>
-                                </c:if>
+                                <p><a href="/automated_line-${item1.url}" > <strong>${item1.modelEn}</strong> </a> </p>
+                                <%--<c:if test="${item1.luminousFluxEmergency > 0}">--%>
+                                    <%--<p > <spring:message code="lightall.emergency" text="Emergency" /> </p>--%>
+                                <%--</c:if>--%>
                         </td>
                    </c:forEach> 
                         
@@ -164,7 +166,7 @@
                     
 <!--                    <tr class="tr-add-to-cart">
                         <td>&nbsp;</td>
-                    <c:forEach items="${listLight}" var="item1">
+                    <c:forEach items="${listAutomatedLinet}" var="item1">
                         <td class="text-center">
                             <div class="add-cart-button">
                                 <a class="le-button add_to_cart_button  product_type_simple" href="/add-product-to-customer-basket.htm?id=${item1.id}&model=${item1.model}">Add to cart</a>
@@ -179,21 +181,242 @@
                 
                 <tbody>
                                                                                                      
-                  <tr class="comparison-item price">   
-                        <th><spring:message code="lightcompare.manufacturer" text="Manufacturer"/></th>
-                     <c:forEach items="${listLight}" var="item1">
-                        <td class="comparison-item-cell odd product_39">
-                            <span class="amount">${item1.manufacturer}</span>                        
-                        </td>
-                     </c:forEach>
+                  <%--<tr class="comparison-item price">   --%>
+                        <%--<th><spring:message code="lightcompare.manufacturer" text="Manufacturer"/></th>--%>
+                     <%--<c:forEach items="${listAutomatedLine}" var="item1">--%>
+                        <%--<td class="comparison-item-cell odd product_39">--%>
+                            <%--<span class="amount">${item1.manufacturerEn}</span>--%>
+                        <%--</td>--%>
+                     <%--</c:forEach>--%>
 
-                    </tr>
+                    <%--</tr>--%>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.model" text="model" /></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                      <td  class="comparison-item-cell odd product_39">
+                          <span class="amount"><c:if test="${pageContext.response.locale == 'en'}">${automatedLine.modelEn}
+                          </c:if>
+                          <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.modelRu}
+                          </c:if></span>
+                      </td>
+                      </c:forEach>
+
+                  </tr>
+
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="lightcompare.type" text="type" /></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td  class="comparison-item-cell odd product_39">
+                              <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.typeEn}
+                              </c:if>
+                              <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.typeRu}
+                              </c:if>
+                          </td>
+                      </c:forEach>
+
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="lightcompare.manufacturer" text="Manufacturer" /></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">
+                              <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.manufacturerEn}
+                              </c:if>
+                              <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.manufacturerRu}
+                              </c:if>
+                          </td>
+                      </c:forEach>
+                  </tr>
+                  <%--<li>--%>
+                  <%--<label><spring:message code="lightcompare.country" text="Country" /></label>--%>
+                  <%--<div class="value">${automatedLine.countryEn}</div>--%>
+                  <%--</li>--%>
+
+
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="lightcompare.cnc" text="cnc"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">
+                              <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.cncEn}
+                              </c:if>
+                              <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.cncRu}
+                              </c:if>
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="lightcompare.cnc_full" text="cnc full"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">
+                              <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.cncFullEn}
+                              </c:if>
+                              <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.cncFullRu}
+                              </c:if>
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="lightcompare.machine_condition" text="machine condition"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">
+                              <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.machineConditionEn}
+                              </c:if>
+                              <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.machineConditionRu}
+                              </c:if>
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <%--<li>--%>
+                  <%--<label><spring:message code="lightcompare.luminous_flux_emergency" text="luminous Flux Emergency"/></label>--%>
+                  <%--<div class="value">--%>
+                  <%--<c:choose>--%>
+                  <%--<c:when test="${lightOffice.luminousFluxEmergency==0}">--%>
+                  <%--- --%>
+                  <%--</c:when>    --%>
+                  <%--<c:otherwise>--%>
+                  <%--${lightOffice.luminousFluxEmergency} --%>
+                  <%--</c:otherwise>--%>
+                  <%--</c:choose>--%>
+                  <%--</div>--%>
+                  <%--</li>--%>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.machine_location" text="Machine location"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">
+                              <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.machineLocationEn}
+                              </c:if>
+                              <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.machineLocationRu}
+                              </c:if>
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <%--<li>--%>
+                  <%--<label><spring:message code="lightcompare.size" text="size"/></label>--%>
+                  <%--<div class="value">--%>
+                  <%--${lightOffice.size} --%>
+                  <%--<br/>  --%>
+                  <%--<c:if test="${not empty item1.sizeInstallation}" >--%>
+                  <%--<br/>  (${automatedLine.sizeInstallation} Installation size)--%>
+                  <%--</c:if>--%>
+                  <%--</div>--%>
+                  <%--</li>--%>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.year" text="Year"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">${automatedLine.year}
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.workpiece" text="workpiece"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">
+
+
+                      <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.workpieceEn}
+                      </c:if>
+                      <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.workpieceRu}
+                      </c:if>
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.workpiece_weight" text="workpiece weight"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">${automatedLine.workpieceWeight}
+                          </td>
+                      </c:forEach>
+                  </tr>
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.workpiece" text="workpiece"/></th>
+                          <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                      <td class="comparison-item-cell odd product_39">
+
+
+                          <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.workpieceEn}
+                          </c:if>
+                          <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.workpieceRu}
+                          </c:if>
+                      </td>
+                      </c:forEach>
+                  </tr>
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.workpiece_description" text="workpiece description"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">
+                              <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.workpieceDescriptionEn}
+                              </c:if>
+                              <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.workpieceDescriptionRu}
+                              </c:if>
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.dimensions" text="dimensions"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">${automatedLine.dimensions}
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.weight" text="weight"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">${automatedLine.weight}
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <%--<li>--%>
+                  <%--<label><spring:message code="numOfWorkingStaff" text="num of working staff"/> </label>--%>
+                  <%--<div class="value">${automatedLine.numOfWorkingStaff}</div>--%>
+                  <%--</li>--%>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.productivity" text="productivity"/> </th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">${automatedLine.productivity}
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.price" text="price"/> </th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">${automatedLine.price}
+                          </td>
+                      </c:forEach>
+                  </tr>
+
+                  <tr class="comparison-item price">
+                      <th><spring:message code="automated_line.description" text="description"/></th>
+                      <c:forEach items="${listAutomatedLine}" var="automatedLine">
+                          <td class="comparison-item-cell odd product_39">
+                              <c:if test="${pageContext.response.locale == 'en'}">${automatedLine.descriptionEn}
+                              </c:if>
+                              <c:if test="${pageContext.response.locale == 'russia'}">${automatedLine.descriptionRu}
+                              </c:if>
+                          </td>
+                      </c:forEach>
+                  </tr>
                                                                                             
                     <tr class="comparison-item description">
                         <th><spring:message code="lightcompare.type" text="Type"/></th>
-                                <c:forEach items="${listLight}" var="item1">
+                                <c:forEach items="${listAutomatedLine}" var="item1">
                                     <td class="comparison-item-cell odd product_39">
-                                        <p> ${item1.type} </p>
+                                        <p> ${item1.typeEn} </p>
                                     </td>
                                 </c:forEach>
                         
@@ -201,215 +424,215 @@
                     </tr>
                         
                     
-                    <tr class="comparison-item price">
-                        <th><spring:message code="lightcompare.сountry" text="Country"/> </th>
-                     <c:forEach items="${listLight}" var="item1">
-                        <td class="comparison-item-cell odd product_39">
-                            <!--<span class="amount">${item1.country}</span>-->                        
-                            <p>${item1.country}</p>                        
-                        </td>
-                     </c:forEach>
-                    </tr>
+                    <%--<tr class="comparison-item price">--%>
+                        <%--<th><spring:message code="lightcompare.сountry" text="Country"/> </th>--%>
+                     <%--<c:forEach items="${listAutomatedLine}" var="item1">--%>
+                        <%--<td class="comparison-item-cell odd product_39">--%>
+                            <%--<!--<span class="amount">${item1.countryEn}</span>-->--%>
+                            <%--<p>${item1.country}</p>                        --%>
+                        <%--</td>--%>
+                     <%--</c:forEach>--%>
+                    <%--</tr>--%>
                     
                     
-                    <tr class="comparison-item description">
-                        <th><spring:message code="lightcompare.power" text="Power, Watt"/></th>
-                                <c:forEach items="${listLight}" var="item1">
-                                    <td class="comparison-item-cell odd product_39">
-                                        <p> ${item1.power} </p>
-                                    </td>
-                                </c:forEach>
-                    </tr>
+                    <%--<tr class="comparison-item description">--%>
+                        <%--<th><spring:message code="lightcompare.power" text="Power, Watt"/></th>--%>
+                                <%--<c:forEach items="${listAutomatedLine}" var="item1">--%>
+                                    <%--<td class="comparison-item-cell odd product_39">--%>
+                                        <%--<p> ${item1.power} </p>--%>
+                                    <%--</td>--%>
+                                <%--</c:forEach>--%>
+                    <%--</tr>--%>
                                     
-                     <tr class="comparison-item price">
-                        <th><spring:message code="lightcompare.diffuser" text="Diffuser"/></th>
-                     <c:forEach items="${listLight}" var="item1">
-                        <td class="comparison-item-cell odd product_39">                                           
-                            <p>${item1.diffuser}</p>                        
-                        </td>
-                     </c:forEach>
-                    </tr>                         
+                     <%--<tr class="comparison-item price">--%>
+                        <%--<th><spring:message code="lightcompare.diffuser" text="Diffuser"/></th>--%>
+                     <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                        <%--<td class="comparison-item-cell odd product_39">                                           --%>
+                            <%--<p>${item1.diffuser}</p>                        --%>
+                        <%--</td>--%>
+                     <%--</c:forEach>--%>
+                    <%--</tr>                         --%>
                     
                     
-                    <tr class="comparison-item description">
-                        <th><spring:message code="lightcompare.luminous_flux" text="luminous Flux"/></th>
-                                <c:forEach items="${listLight}" var="item1">
-                                    <td class="comparison-item-cell odd product_39">
-                                        <p> ${item1.luminousFlux} </p>
-                                    </td>
-                                </c:forEach>
-                    </tr> 
+                    <%--<tr class="comparison-item description">--%>
+                        <%--<th><spring:message code="lightcompare.luminous_flux" text="luminous Flux"/></th>--%>
+                                <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                                    <%--<td class="comparison-item-cell odd product_39">--%>
+                                        <%--<p> ${item1.luminousFlux} </p>--%>
+                                    <%--</td>--%>
+                                <%--</c:forEach>--%>
+                    <%--</tr> --%>
                     
-                    <tr class="comparison-item description">
-                        <th><spring:message code="lightcompare.luminous_flux_emergency" text="luminous Flux Emergency"/></th>
-                                <c:forEach items="${listLight}" var="item1">
-                                    <td class="comparison-item-cell odd product_39">
-                                             <c:choose>
-                                                <c:when test="${item1.luminousFluxEmergency==0}">
-                                                 <p> - </p>
-                                                </c:when>    
-                                                <c:otherwise>
-                                               <p> ${item1.luminousFluxEmergency} </p>
-                                                </c:otherwise>
-                                            </c:choose>
-                                       
-                                    </td>
-                                </c:forEach>
-                    </tr>                    
+                    <%--<tr class="comparison-item description">--%>
+                        <%--<th><spring:message code="lightcompare.luminous_flux_emergency" text="luminous Flux Emergency"/></th>--%>
+                                <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                                    <%--<td class="comparison-item-cell odd product_39">--%>
+                                             <%--<c:choose>--%>
+                                                <%--<c:when test="${item1.luminousFluxEmergency==0}">--%>
+                                                 <%--<p> - </p>--%>
+                                                <%--</c:when>    --%>
+                                                <%--<c:otherwise>--%>
+                                               <%--<p> ${item1.luminousFluxEmergency} </p>--%>
+                                                <%--</c:otherwise>--%>
+                                            <%--</c:choose>--%>
+                                       <%----%>
+                                    <%--</td>--%>
+                                <%--</c:forEach>--%>
+                    <%--</tr>                    --%>
                                                     
                     
-                     <tr class="comparison-item price">
-                        <th><spring:message code="lightcompare.temperature_glow" text="temperature Glow"/></th>
-                     <c:forEach items="${listLight}" var="item1">
-                        <td class="comparison-item-cell odd product_39">                                           
-                            <p>${item1.temperatureGlow}</p>                        
-                        </td>
-                     </c:forEach>
-                    </tr>                         
+                     <%--<tr class="comparison-item price">--%>
+                        <%--<th><spring:message code="lightcompare.temperature_glow" text="temperature Glow"/></th>--%>
+                     <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                        <%--<td class="comparison-item-cell odd product_39">                                           --%>
+                            <%--<p>${item1.temperatureGlow}</p>                        --%>
+                        <%--</td>--%>
+                     <%--</c:forEach>--%>
+                    <%--</tr>                         --%>
                     
-                       <tr class="comparison-item description">
-                        <th><spring:message code="lightcompare.size" text="size"/></th>
-                                <c:forEach items="${listLight}" var="item1">
-                                    <td class="comparison-item-cell odd product_39">
-                                        <p> ${item1.size} 
-                                            <c:if test="${not empty item1.sizeInstallation}" >
-                                              <br/>  (${item1.sizeInstallation} Installation size)
-                                            </c:if>
-                                                
-                                        </p>
-                                    </td>
-                                </c:forEach>
-                    </tr>                    
+                       <%--<tr class="comparison-item description">--%>
+                        <%--<th><spring:message code="lightcompare.size" text="size"/></th>--%>
+                                <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                                    <%--<td class="comparison-item-cell odd product_39">--%>
+                                        <%--<p> ${item1.size} --%>
+                                            <%--<c:if test="${not empty item1.sizeInstallation}" >--%>
+                                              <%--<br/>  (${item1.sizeInstallation} Installation size)--%>
+                                            <%--</c:if>--%>
+                                                <%----%>
+                                        <%--</p>--%>
+                                    <%--</td>--%>
+                                <%--</c:forEach>--%>
+                    <%--</tr>                    --%>
                     
 
                     
-                       <tr class="comparison-item description">
-                        <th><spring:message code="lightcompare.coefficient_pulsation" text="coefficient Pulsation"/></th>
-                                <c:forEach items="${listLight}" var="item1">
-                                    <td class="comparison-item-cell odd product_39">
-                                        <p> ${item1.coefficientPulsation} </p>
-                                    </td>
-                                </c:forEach>
-                       </tr>                       
+                       <%--<tr class="comparison-item description">--%>
+                        <%--<th><spring:message code="lightcompare.coefficient_pulsation" text="coefficient Pulsation"/></th>--%>
+                                <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                                    <%--<td class="comparison-item-cell odd product_39">--%>
+                                        <%--<p> ${item1.coefficientPulsation} </p>--%>
+                                    <%--</td>--%>
+                                <%--</c:forEach>--%>
+                       <%--</tr>                       --%>
                     
-                    <tr class="comparison-item price">
-                        <th><spring:message code="lightcompare.coefficient_power" text="coefficient Power"/></th>
-                     <c:forEach items="${listLight}" var="item1">
-                        <td class="comparison-item-cell odd product_39">                                           
-                            <p>${item1.coefficientPower}</p>                        
-                        </td>
-                     </c:forEach>
-                    </tr>                         
+                    <%--<tr class="comparison-item price">--%>
+                        <%--<th><spring:message code="lightcompare.coefficient_power" text="coefficient Power"/></th>--%>
+                     <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                        <%--<td class="comparison-item-cell odd product_39">                                           --%>
+                            <%--<p>${item1.coefficientPower}</p>                        --%>
+                        <%--</td>--%>
+                     <%--</c:forEach>--%>
+                    <%--</tr>                         --%>
                     
-                       <tr class="comparison-item description">
-                        <th><spring:message code="lightcompare.type_lidc" text="type Lidc"/></th>
-                                <c:forEach items="${listLight}" var="item1">
-                                    <td class="comparison-item-cell odd product_39">
-                                        <p> ${item1.typeLidc} </p>
-                                        <c:if test="${not empty item1.photo5}">
-                                         <img width="220" height="154" alt="${item1.photo5}" class="attachment-yith-woocompare-image" src="resources/assets/images/products/${item1.photo5}">
-                                        </c:if>
-                                    </td>
-                                </c:forEach>
-                       </tr>                           
+                       <%--<tr class="comparison-item description">--%>
+                        <%--<th><spring:message code="lightcompare.type_lidc" text="type Lidc"/></th>--%>
+                                <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                                    <%--<td class="comparison-item-cell odd product_39">--%>
+                                        <%--<p> ${item1.typeLidc} </p>--%>
+                                        <%--<c:if test="${not empty item1.photo5}">--%>
+                                         <%--<img width="220" height="154" alt="${item1.photo5}" class="attachment-yith-woocompare-image" src="resources/assets/images/products/${item1.photo5}">--%>
+                                        <%--</c:if>--%>
+                                    <%--</td>--%>
+                                <%--</c:forEach>--%>
+                       <%--</tr>                           --%>
                        
 
-                   <tr class="comparison-item price">
-                        <th><spring:message code="lightcompare.index_color" text="index Color"/></th>
-                     <c:forEach items="${listLight}" var="item1">
-                        <td class="comparison-item-cell odd product_39">                                           
-                            <p>${item1.indexColor}</p>                        
-                        </td>
-                     </c:forEach>
-                    </tr>      
+                   <%--<tr class="comparison-item price">--%>
+                        <%--<th><spring:message code="lightcompare.index_color" text="index Color"/></th>--%>
+                     <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                        <%--<td class="comparison-item-cell odd product_39">                                           --%>
+                            <%--<p>${item1.indexColor}</p>                        --%>
+                        <%--</td>--%>
+                     <%--</c:forEach>--%>
+                    <%--</tr>      --%>
                     
 
                     
                             
-                       <tr class="comparison-item price">
-                            <th><spring:message code="lightcompare.enclosure_protection" text="Enclosure protection , IP"/></th>
-                         <c:forEach items="${listLight}" var="item1">
-                            <td class="comparison-item-cell odd product_39">                                           
-                                <p>${item1.security}</p>                        
-                            </td>
-                         </c:forEach>
-                        </tr>                         
+                       <%--<tr class="comparison-item price">--%>
+                            <%--<th><spring:message code="lightcompare.enclosure_protection" text="Enclosure protection , IP"/></th>--%>
+                         <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                            <%--<td class="comparison-item-cell odd product_39">                                           --%>
+                                <%--<p>${item1.security}</p>                        --%>
+                            <%--</td>--%>
+                         <%--</c:forEach>--%>
+                        <%--</tr>                         --%>
 
-                                   <tr class="comparison-item price">
-                                        <th><spring:message code="lightcompare.weight" text="weight, kg"/></th>
-                                     <c:forEach items="${listLight}" var="item1">
-                                        <td class="comparison-item-cell odd product_39">                                           
-                                            <p>${item1.weight}</p>                        
-                                        </td>
-                                     </c:forEach>
-                                    </tr>                         
+                                   <%--<tr class="comparison-item price">--%>
+                                        <%--<th><spring:message code="lightcompare.weight" text="weight, kg"/></th>--%>
+                                     <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                                        <%--<td class="comparison-item-cell odd product_39">                                           --%>
+                                            <%--<p>${item1.weight}</p>                        --%>
+                                        <%--</td>--%>
+                                     <%--</c:forEach>--%>
+                                    <%--</tr>                         --%>
                     
-                       <tr class="comparison-item description">
-                        <th><spring:message code="lightcompare.work_temperature" text="Work temperature"/> </th>
-                                <c:forEach items="${listLight}" var="item1">
-                                    <td class="comparison-item-cell odd product_39">
-                                        <p> ${item1.temperatureWork} </p>
-                                    </td>
-                                </c:forEach>
-                       </tr>   
+                       <%--<tr class="comparison-item description">--%>
+                        <%--<th><spring:message code="lightcompare.work_temperature" text="Work temperature"/> </th>--%>
+                                <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                                    <%--<td class="comparison-item-cell odd product_39">--%>
+                                        <%--<p> ${item1.temperatureWork} </p>--%>
+                                    <%--</td>--%>
+                                <%--</c:forEach>--%>
+                       <%--</tr>   --%>
                        
                        
-<tr class="comparison-item description">
-<th><spring:message code="lightcompare.guarantee" text="guarantee, years"/> </th>
-        <c:forEach items="${listLight}" var="item1">
-            <td class="comparison-item-cell odd product_39">
-                <p> ${item1.guarantee} </p>
-            </td>
-        </c:forEach>
-</tr>   
+<%--<tr class="comparison-item description">--%>
+<%--<th><spring:message code="lightcompare.guarantee" text="guarantee, years"/> </th>--%>
+        <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+            <%--<td class="comparison-item-cell odd product_39">--%>
+                <%--<p> ${item1.guarantee} </p>--%>
+            <%--</td>--%>
+        <%--</c:forEach>--%>
+<%--</tr>   --%>
 
-        <tr class="comparison-item description">
-        <th>dimming Function</th>
-                <c:forEach items="${listLight}" var="item1">
-                    <td class="comparison-item-cell odd product_39">
-                            <c:choose>
-                                <c:when test="${empty item1.dimmingFunction}">
-                                 <p> - </p>
-                                </c:when>    
-                                <c:otherwise>
-                               <p>  ${item1.dimmingFunction}  </p>
-                                </c:otherwise>
-                            </c:choose>                          
-                    </td>
-                </c:forEach>
-        </tr>                       
+        <%--<tr class="comparison-item description">--%>
+        <%--<th>dimming Function</th>--%>
+                <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                    <%--<td class="comparison-item-cell odd product_39">--%>
+                            <%--<c:choose>--%>
+                                <%--<c:when test="${empty item1.dimmingFunction}">--%>
+                                 <%--<p> - </p>--%>
+                                <%--</c:when>    --%>
+                                <%--<c:otherwise>--%>
+                               <%--<p>  ${item1.dimmingFunction}  </p>--%>
+                                <%--</c:otherwise>--%>
+                            <%--</c:choose>                          --%>
+                    <%--</td>--%>
+                <%--</c:forEach>--%>
+        <%--</tr>                       --%>
                      
                        
                      
-                <tr class="comparison-item description">
-                <th>mounting Type</th>
-                    <c:forEach items="${listLight}" var="item1">
-                        <td class="comparison-item-cell odd product_39">
-                                 <c:choose>
-                                    <c:when test="${empty item1.mountingType}">
-                                     <p> - </p>
-                                    </c:when>    
-                                    <c:otherwise>
-                                   <p> ${item1.mountingType} </p>
-                                    </c:otherwise>
-                                </c:choose>       
-                        </td>
-                    </c:forEach>
-                </tr>                       
+                <%--<tr class="comparison-item description">--%>
+                <%--<th>mounting Type</th>--%>
+                    <%--<c:forEach items="${listAutomatedLinet}" var="item1">--%>
+                        <%--<td class="comparison-item-cell odd product_39">--%>
+                                 <%--<c:choose>--%>
+                                    <%--<c:when test="${empty item1.mountingType}">--%>
+                                     <%--<p> - </p>--%>
+                                    <%--</c:when>    --%>
+                                    <%--<c:otherwise>--%>
+                                   <%--<p> ${item1.mountingType} </p>--%>
+                                    <%--</c:otherwise>--%>
+                                <%--</c:choose>       --%>
+                        <%--</td>--%>
+                    <%--</c:forEach>--%>
+                <%--</tr>                       --%>
                                                
                     
        
                             
-                                <sec:authorize access="hasRole('ROLE_USER')">
-                                        <tr class="comparison-item description">
-                                        <th>Price (EXW)</th>
-                                            <c:forEach items="${compareCartVmc.items}" var="item1">
-                                                <td class="comparison-item-cell odd product_39">
-                                                    <p> ${item1.product.price} </p>
-                                                </td>
-                                            </c:forEach>
-                                        </tr>  
-                                </sec:authorize>
+                                <%--<sec:authorize access="hasRole('ROLE_USER')">--%>
+                                        <%--<tr class="comparison-item description">--%>
+                                        <%--<th>Price (EXW)</th>--%>
+                                            <%--<c:forEach items="${compareCartVmc.items}" var="item1">--%>
+                                                <%--<td class="comparison-item-cell odd product_39">--%>
+                                                    <%--<p> ${item1.product.price} </p>--%>
+                                                <%--</td>--%>
+                                            <%--</c:forEach>--%>
+                                        <%--</tr>  --%>
+                                <%--</sec:authorize>--%>
                        
                        
                        
